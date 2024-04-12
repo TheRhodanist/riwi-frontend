@@ -1,0 +1,34 @@
+import React from "react";
+import {HeaderBar} from "../components/Header/HeaderBar";
+import useDeviceMediaType from "../hooks/useDeviceMediaType";
+import useGetHello from "../hooks/useGetHello";
+import UserList from "../components/UserList/UserList";
+
+interface Props {
+
+}
+
+export function MainPage(props: Props) {
+    const text = useGetHello();
+
+
+    function renderMobile() {
+        return (
+            <div>{text}</div>
+        )
+    }
+
+    const {isMobile} = useDeviceMediaType();
+
+
+    return (
+        <>
+            <HeaderBar/>
+            <div className="App">
+                Hello
+            </div>
+            {isMobile ? renderMobile() : null}
+            <UserList/>
+        </>
+    )
+}
