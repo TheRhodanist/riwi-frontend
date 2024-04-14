@@ -1,0 +1,18 @@
+.header {
+    width: 100%;
+    justify-content: end;
+}
+
+.loginWrapper {
+    margin-left: 10px;
+
+}
+
+.appButtonWrapper {
+    width: 100%;
+    justify-content: start;
+}
+
+#loginButton {
+    margin-left: 10px;
+}

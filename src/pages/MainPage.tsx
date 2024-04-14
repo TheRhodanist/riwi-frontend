@@ -5,7 +5,8 @@ import useGetHello from "../hooks/useGetHello";
 import UserList from "../components/UserList/UserList";
 
 interface Props {
-
+    darkMode: boolean | null;
+    setDarkMode: (darkMode: boolean) => void;
 }
 
 export function MainPage(props: Props) {
@@ -23,7 +24,7 @@ export function MainPage(props: Props) {
 
     return (
         <>
-            <HeaderBar/>
+            <HeaderBar darkMode={props.darkMode} setDarkMode={props.setDarkMode}/>
             <div className="App">
                 Hello
             </div>
