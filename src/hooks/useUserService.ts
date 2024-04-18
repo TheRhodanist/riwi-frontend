@@ -1,4 +1,5 @@
 import {User} from "../types/User";
+import bcrypt from 'bcryptjs';
 
 export default function useUserService() {
 
@@ -15,7 +16,6 @@ export default function useUserService() {
                 'Content-Type': 'application/json'
             },
             mode: 'cors'
-
         })
             .then(response => {
                 if (response.ok) return response.text()
@@ -40,8 +40,13 @@ export default function useUserService() {
             })
     }
 
+    function hashPassword(password: string): string {
+        return bcrypt.hashSync(password, 100);
+    }
+
     return {
         createUser,
-        getUsers
+        getUsers,
+        hashPassword
     }
 }

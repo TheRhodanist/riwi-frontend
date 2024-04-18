@@ -35,6 +35,7 @@ export function LoginDialog(props: Props) {
             <DialogContent className={styles.dialogContentWrapper}>
                 <TextField variant={"standard"}
                            label={"E-Mail"}
+                           autoComplete={"email"}
                            required>
                 </TextField>
                 <Divider variant={"middle"}></Divider>

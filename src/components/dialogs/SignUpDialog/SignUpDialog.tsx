@@ -17,7 +17,8 @@ export function SignUpDialog(props: Props) {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
         const formJson = Object.fromEntries((formData as any).entries());
-        userService.createUser(formJson.email, formJson.password).then(response => {
+        const hashedPassword = userService.hashPassword(formJson.password);
+        userService.createUser(formJson.email, hashedPassword).then(response => {
             handleClose()
         });
 
@@ -44,6 +45,7 @@ export function SignUpDialog(props: Props) {
                 <TextField variant={"standard"}
                            label={"E-Mail"}
                            name={"email"}
+                           autoComplete={"email"}
                            required>
                 </TextField>
                 <Divider variant={"middle"}></Divider>
@@ -51,7 +53,7 @@ export function SignUpDialog(props: Props) {
                            label={"Password"}
                            type="password"
                            name={"password"}
-                           autoComplete="current-password"
+                           autoComplete="new-password"
                            required>
                 </TextField>
                 <Divider variant={"middle"}></Divider>
